@@ -1,4 +1,1 @@
-# Integrantes
 
-- Agus
-- Manu
