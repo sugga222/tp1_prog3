@@ -431,6 +431,75 @@ footer.site-footer {
   color: var(--text);
 }
 
+/* Login Form Styles */
+.login-form {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 28px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(17, 26, 46, 0.8), rgba(15, 23, 48, 0.8));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.login-form h2 {
+  margin: 0 0 20px;
+  text-align: center;
+  font-size: 24px;
+}
+
+.login-form > div {
+  margin-bottom: 16px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(10, 16, 30, 0.6);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.login-form input:focus {
+  border-color: var(--brand-2);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15);
+  outline: none;
+}
+
+.login-form .btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.login-form p {
+  text-align: center;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.login-form a {
+  color: var(--brand-2);
+  font-weight: 600;
+}
+
+.login-form a:hover {
+  color: #ffff;
+  text-decoration: underline;
+}
+
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
