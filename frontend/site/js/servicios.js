@@ -1,10 +1,12 @@
+const API_BASE = (typeof CONFIG !== 'undefined' && CONFIG.API_URL) ? CONFIG.API_URL : 'http://localhost:3000';
+
 const contenedor = document.getElementById("contenedor-servicios");
 
 const obtenerServicios = async () => {
 
     try {
 
-        const respuesta = await fetch("http://localhost:3000/servicios");
+        const respuesta = await fetch(API_BASE + "/servicios");
 
         const servicios = await respuesta.json();
 

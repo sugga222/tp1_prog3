@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         try {
 
-            const response = await fetch('http://localhost:3000/perfil/1');
+            const API_BASE = (typeof CONFIG !== 'undefined' && CONFIG.API_URL) ? CONFIG.API_URL : 'http://localhost:3000';
+
+            const response = await fetch(API_BASE + '/perfil/1');
 
             const data = await response.json();
 

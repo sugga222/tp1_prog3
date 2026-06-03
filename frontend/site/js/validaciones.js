@@ -1,5 +1,6 @@
 // Validaciones de formularios
 document.addEventListener('DOMContentLoaded', function() {
+    const API_BASE = (typeof CONFIG !== 'undefined' && CONFIG.API_URL) ? CONFIG.API_URL : 'http://localhost:3000';
     // Validación del formulario de pedido
     const pedidoForm = document.querySelector('#contenido form');
     if (pedidoForm && pedidoForm.querySelector('input[name="nombre"]')) {
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Enviar al backend
             try {
-                const response = await fetch('http://localhost:3000/pedidos', {
+                const response = await fetch(API_BASE + '/pedidos', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -76,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Enviar al backend
             try {
-                const response = await fetch('http://localhost:3000/contacto', {
+                const response = await fetch(API_BASE + '/contacto', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
