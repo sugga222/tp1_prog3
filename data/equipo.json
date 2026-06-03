@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "nombre": "Manuel Aguilar",
+    "rol": "Backend Developer",
+    "email": "manuaguilar420@gmail.com"
+  },
+  {
+    "id": 2,
+    "nombre": "Agustin",
+    "rol": "Frontend Developer",
+    "email": "gonagus.fran11@gmail.com"
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "nombre": "Desarrollo Web",
+    "descripcion": "Creacion de paginas web modernas y responsivas"
+  },
+  {
+    "id": 2,
+    "nombre": "Diseño UX/UI",
+    "descripcion": "Diseño de interfaces intuitivas para usuarios"
+  },
+  {
+    "id": 3,
+    "nombre": "Marketing Digital",
+    "descripcion": "Publicidad y campañas en redes sociales"
+  },
+  {
+    "id": 4,
+    "nombre": "Soporte Tecnico",
+    "descripcion": "Mantenimiento y asistencia tecnica"
+  },
+  {
+    "id": 5,
+    "nombre": "Desarrollo Mobile",
+    "descripcion": "Aplicaciones para Android e iOS"
+  },
+  {
+    "id": 6,
+    "nombre": "Ciberseguridad",
+    "descripcion": "Proteccion de sistemas y datos"
+  },
+  {
+    "id": 7,
+    "nombre": "Cloud Computing",
+    "descripcion": "Servicios y almacenamiento en la nube"
+  },
+  {
+    "id": 8,
+    "nombre": "Consultoria IT",
+    "descripcion": "Asesoramiento tecnologico para empresas"
+  },
+  {
+    "id": 9,
+    "nombre": "Base de Datos",
+    "descripcion": "Diseño y administracion de bases de datos"
+  },
+  {
+    "id": 10,
+    "nombre": "SEO",
+    "descripcion": "Optimizacion para motores de busqueda"
+  },
+  {
+    "id": 11,
+    "nombre": "E-commerce",
+    "descripcion": "Tiendas online y sistemas de venta"
+  },
+  {
+    "id": 12,
+    "nombre": "Automatizacion",
+    "descripcion": "Procesos automatizados para empresas"
+  },
+  {
+    "id": 13,
+    "nombre": "Analisis de Datos",
+    "descripcion": "Procesamiento y analisis de informacion"
+  },
+  {
+    "id": 14,
+    "nombre": "Inteligencia Artificial",
+    "descripcion": "Soluciones basadas en IA"
+  }
+]

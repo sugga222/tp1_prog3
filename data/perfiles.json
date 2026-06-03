@@ -1,0 +1,26 @@
+[
+{
+    "id": 1,
+    "nombre": "Manuel Aguilar",
+    "email": "manuaguilar420@gmail.com",
+    "fechaRegistro": "2026-05-01",
+    "foto": "https://i.pravatar.cc/150?img=1",
+    "ultimosPedidos": [
+    "Desarrollo Web",
+    "Marketing Digital",
+    "Cloud Computing"
+    ]
+},
+{
+    "id": 2,
+    "nombre": "Agustin",
+    "email": "gonagus.fran11@gmail.com",
+    "fechaRegistro": "2026-05-10",
+    "foto": "https://i.pravatar.cc/150?img=2",
+    "ultimosPedidos": [
+    "SEO",
+    "Ciberseguridad",
+    "Diseño UX/UI"
+    ]
+}
+]
