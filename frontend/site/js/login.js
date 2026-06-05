@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+    const API_BASE = (typeof CONFIG !== 'undefined' && CONFIG.API_URL) ? CONFIG.API_URL : 'http://localhost:3000';
+
     const loginForm = document.getElementById('login-form');
 
     if (loginForm) {
@@ -12,19 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const password = document.getElementById('password').value;
 
-            console.log(`🔐 Iniciando login para: ${email}`);
-
             try {
 
-                // Mostrar spinner si existe elemento
-                const submitBtn = loginForm.querySelector('button[type="submit"]');
-                if (submitBtn) {
-                    submitBtn.disabled = true;
-                    submitBtn.textContent = 'Cargando...';
-                }
-
                 const response = await fetch(
-                    CONFIG.API_URL + '/login',
+                    API_BASE + '/login',
                     {
                         method: 'POST',
 
@@ -39,13 +32,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 );
 
-                console.log(`✓ Respuesta recibida con código: ${response.status}`);
-
                 const data = await response.json();
 
                 if (response.ok) {
-
-                    console.log(`✓ Login exitoso para usuario: ${data.user.nombre}`);
 
                     // Guardar usuario
                     localStorage.setItem(
@@ -53,31 +42,23 @@ document.addEventListener('DOMContentLoaded', function () {
                         JSON.stringify(data.user)
                     );
 
-                    alert('✓ Login exitoso');
+                    alert('Login exitoso');
 
                     // Redirigir
                     window.location.href = './perfil.html';
 
                 } else {
 
-                    console.error(`✗ Login falló: ${data.mensaje}`);
-                    alert(`❌ ${data.mensaje}`);
+                    alert(data.mensaje);
 
                 }
 
             } catch (error) {
 
-                console.error('✗ Error de conexión:', error);
+                console.error('Error:', error);
 
-                alert('❌ Error de conexión con el servidor. Verifica que esté online.');
+                alert('Error de conexión con el servidor');
 
-            } finally {
-                // Re-habilitar botón
-                const submitBtn = loginForm.querySelector('button[type="submit"]');
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Ingresar';
-                }
             }
         });
     }

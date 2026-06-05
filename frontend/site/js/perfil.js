@@ -6,15 +6,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         try {
 
-            console.log("✓ Iniciando carga de perfil desde API");
+            const API_BASE = (typeof CONFIG !== 'undefined' && CONFIG.API_URL) ? CONFIG.API_URL : 'http://localhost:3000';
 
-            const response = await fetch(CONFIG.API_URL + '/perfil/1');
-
-            console.log("✓ Respuesta recibida con código:", response.status);
+            const response = await fetch(API_BASE + '/perfil/1');
 
             const data = await response.json();
-
-            console.log(`✓ Perfil de ${data.nombre} cargado correctamente`);
 
             mostrarDatosUsuario(data);
 
@@ -27,8 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         } catch (error) {
 
-            console.error('✗ Error al cargar perfil:', error);
-            alert('Error al cargar el perfil. Intenta nuevamente.');
+            console.error('Error al cargar perfil:', error);
 
         }
     }
@@ -123,9 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         logoutBtn.addEventListener('click', function () {
 
-            console.log("✓ Cerrando sesión del usuario");
-            localStorage.removeItem('user');
-            alert('✓ Sesión cerrada');
+            alert('Sesión cerrada');
 
             window.location.href = '../index.html';
 
