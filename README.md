@@ -250,5 +250,5 @@ curl -X POST -H "Content-Type: application/json" -d '{"email":"a@b","password":"
 
 ## Licencia
 
-- Añadir archivo `LICENSE` si deseas elegir una licencia (MIT recomendable para ejercicios académicos).
+
 
