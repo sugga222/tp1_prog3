@@ -1,254 +1,304 @@
-
 # Servitech - Soluciones Digitales
 
-Plataforma web educativa/profesional que muestra servicios (Desarrollo Web, UI/UX, Automatización), con backend en Node/Express y frontend estático en HTML/CSS/JS.
+## Trabajo Práctico N°3 - Programación III
 
-## Tabla de contenidos
-- Resumen
-- Requisitos
-- Instalación rápida
-- Estructura del repositorio
-- Descripción de componentes
-- API: endpoints y ejemplos
-- Esquemas de datos (JSON)
-- Frontend: flujo y archivos clave
-- Ejecución local
-- Despliegue (sugerencia)
-- Pruebas y depuración
-- Buenas prácticas
-- Contribuir
-- Contacto y créditos
-- Licencia
+Aplicación web desarrollada utilizando Node.js, Express, HTML, CSS y JavaScript.
+
+El proyecto implementa una arquitectura cliente-servidor donde el frontend consume una API REST desarrollada en Express para visualizar información sobre servicios, equipo de trabajo y perfiles de usuarios.
 
 ---
 
-## Resumen
+# Integrantes
 
-Servitech es un proyecto modular con separación clara entre rutas, controladores y datos (JSON). El frontend consume la API a través de `fetch` y es fácilmente desplegable como sitio estático.
+### Agustín González
+
+* Rol principal: Frontend Developer
+* Email: [gonagus.fran11@gmail.com](mailto:gonagus.fran11@gmail.com)
+
+### Manuel Aguilar
+
+* Rol principal: Backend Developer
+* Email: [manuaguilar420@gmail.com](mailto:manuaguilar420@gmail.com)
 
 ---
 
-## Requisitos
+# Tecnologías utilizadas
 
-- Node.js >= 18 (probado con v24)
-- npm
-- Navegador moderno
+## Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+
+## Backend
+
+* Node.js
+* Express.js
+
+## Control de versiones
+
+* Git
+* GitHub
 
 ---
 
-## Instalación rápida
+# Funcionalidades implementadas
+
+## Frontend
+
+* Página principal.
+* Catálogo de servicios.
+* Información del equipo.
+* Formulario de contacto.
+* Formulario de pedido de servicios.
+* Inicio de sesión.
+* Registro de usuarios.
+* Perfil de usuario.
+* Preguntas frecuentes.
+
+## Backend
+
+* API REST desarrollada con Express.
+* Lectura de datos desde archivos JSON.
+* Rutas organizadas por módulo.
+* Controladores independientes.
+* Respuestas en formato JSON.
+* Manejo de errores HTTP.
+
+---
+
+# Estructura del proyecto
+
+```text
+controladores/
+│
+├── equipoController.js
+├── loginController.js
+├── perfilController.js
+├── registroController.js
+└── serviciosController.js
+
+datos/
+│
+├── equipo.json
+├── perfiles.json
+├── servicios.json
+└── usuarios.json
+
+rutas/
+│
+├── equipoRoutes.js
+├── loginRoutes.js
+├── perfilRoutes.js
+├── registroRoutes.js
+└── serviciosRoutes.js
+
+sitio/
+└── frontend/
+    │
+    ├── assets/
+    ├── css/
+    ├── js/
+    │
+    ├── index.html
+    ├── servicios.html
+    ├── equipo.html
+    ├── pedido.html
+    ├── contacto.html
+    ├── login.html
+    ├── registro.html
+    ├── perfil.html
+    └── faq.html
+
+app.js
+server.js
+package.json
+README.md
+```
+
+---
+
+# API REST
+
+## Servicios
+
+### Obtener todos los servicios
+
+```http
+GET /servicios
+```
+
+### Obtener un servicio por ID
+
+```http
+GET /servicios/:id
+```
+
+---
+
+## Equipo
+
+### Obtener integrantes
+
+```http
+GET /equipo
+```
+
+---
+
+## Perfil
+
+### Obtener perfil por ID
+
+```http
+GET /perfil/:id
+```
+
+---
+
+## Login
+
+### Iniciar sesión
+
+```http
+POST /login
+```
+
+---
+
+## Registro
+
+### Registrar usuario
+
+```http
+POST /registro
+```
+
+---
+
+# Almacenamiento de datos
+
+La aplicación utiliza archivos JSON como fuente de datos.
+
+Archivos utilizados:
+
+* servicios.json
+* equipo.json
+* perfiles.json
+* usuarios.json
+
+Esta solución fue implementada con fines académicos para cumplir los requerimientos del trabajo práctico.
+
+---
+
+# Instalación
+
+## Clonar repositorio
 
 ```bash
-# 1. Clonar el repositorio
-git clone https://github.com/sugga222/tp1_prog3.git
-cd tp1_prog3
+git clone URL_DEL_REPOSITORIO
+```
 
-# 2. Instalar dependencias
+## Ingresar al proyecto
+
+```bash
+cd tp1_prog3
+```
+
+## Instalar dependencias
+
+```bash
 npm install
 ```
 
-- Variables de entorno opcionales (crear `.env`):
+## Ejecutar servidor
 
+```bash
+npm start
 ```
+
+o
+
+```bash
+node server.js
+```
+
+---
+
+# Variables de entorno
+
+Crear un archivo `.env` en la raíz del proyecto:
+
+```env
 PORT=3000
 ```
 
 ---
 
-## Estructura del repositorio (resumen)
+# Ejecución local
 
-- `server.js` — Punto de entrada (levanta la app).
-- `app.js` — Configuración Express (middlewares + montaje de rutas).
-- `package.json` — Dependencias y scripts.
-- `routes/` — Definición de rutas HTTP.
-- `controllers/` — Lógica que usa los JSON.
-- `data/` — Base de datos en archivos JSON (servicios, equipo, usuarios, perfiles).
-- `frontend/site/` — HTML, CSS y JS del cliente.
-	- `frontend/site/css/styles.css`
-	- `frontend/site/js/config.js`
-	- `frontend/site/index.html` (home)
-	- Otras páginas: `servicios.html`, `equipo.html`, `pedido.html`, `contacto.html`, `login.html`, `registro.html`, `faq.html`, `perfil.html`
+Una vez iniciado el servidor:
 
----
-
-## Descripción de componentes (detallada)
-
-- **`server.js`**: importa la app (`require('./app')`) y llama a `app.listen(PORT)`. Único archivo que ejecutas en producción.
-- **`app.js`**: configura middlewares (`cors()`, `express.json()`), rutas `app.use('/servicios', ...)`, manejo básico de errores y exporta la instancia Express.
-- **`routes/*.js`**: cada archivo exporta un `Router` que mapea endpoints a funciones del `controller`.
-	- Ejemplo: `routes/serviciosRoutes.js` → `GET /` llama a `serviciosController.obtenerServicios`.
-- **`controllers/*.js`**: funciones asincrónicas que leen archivos JSON con `fs.promises.readFile`, validan y devuelven respuestas con códigos HTTP adecuados (200, 400, 404, 500).
-- **`data/*.json`**: archivos con arrays de objetos. Se usan como DB simple para el TP.
-- **Frontend JS**: todos importan primero `frontend/site/js/config.js` que define `CONFIG.API_URL`. Luego `servicios.js`, `equipo.js`, `login.js`, `perfil.js`, `validaciones.js` realizan `fetch` hacia la API e inyectan contenido en el DOM.
-
----
-
-## API — Endpoints, ejemplos y errores comunes
-
-- Base: `http://localhost:3000` (configurable en `frontend/site/js/config.js`)
-
-- **GET /servicios**
-	- Descripción: retorna todos los servicios.
-	- Respuesta 200:
-
-```json
-[
-	{ "id": 1, "nombre": "Desarrollo Web", "descripcion": "Descripción...", "precio": "Consultar" }
-]
+```text
+http://localhost:3000
 ```
 
-- **GET /servicios/:id**
-	- Descripción: retorna servicio por id.
-	- Respuesta 200: objeto servicio | 404 si no existe.
-
-- **GET /equipo**
-	- Descripción: lista integrantes del equipo.
-	- Respuesta 200: array de miembros `{ id, nombre, rol, email, bio? }`.
-
-- **GET /perfil/:id**
-	- Descripción: devuelve datos de perfil de usuario.
-	- Respuesta 200: `{ id, nombre, email, fechaRegistro, avatar? }` o 404.
-
-- **POST /login**
-	- Body (JSON): `{ "email":"x@x.com", "password":"secreto" }`
-	- Respuesta 200: objeto usuario (sin password) o 401 si falla.
-
-**Errores comunes**:
-- CORS: si frontend y backend corren en puertos diferentes, confirmar `cors()` activo en `app.js`.
-- Rutas 404: validar que `fetch` apunte a `CONFIG.API_URL` correcto.
-- JSON parsing: los controladores usan `utf-8` al leer archivos; evitar archivos JSON mal formados.
+Los endpoints de la API estarán disponibles desde dicha dirección.
 
 ---
 
-## Esquemas de datos (ejemplos representativos)
+# Metodología de trabajo
 
-- `data/servicios.json` (array)
+Para el desarrollo del proyecto se utilizó Git y GitHub mediante trabajo colaborativo basado en ramas.
 
-```json
-[
-	{
-		"id": 1,
-		"nombre": "Desarrollo Web",
-		"descripcion": "Landing pages y sitios multipágina.",
-		"precio": "Consultar",
-		"categoria": "web"
-	}
-]
-```
+## Ramas utilizadas
 
-- `data/equipo.json`
+* main
+* dev
+* feature-frontend-agustin
+* feature-backend-manuel
 
-```json
-[
-	{ "id": 1, "nombre": "Agustin", "rol": "Frontend Developer", "email": "gonagus.fran11@gmail.com" },
-	{ "id": 2, "nombre": "Manuel", "rol": "Backend Developer", "email": "manuaguilar420@gmail.com" }
-]
-```
+## Flujo de trabajo
 
-- `data/usuarios.json`
-
-```json
-[
-	{ "id":1, "email":"usuario@example.com", "password":"hashed-or-plain" }
-]
-```
-
-> Nota: Para un TP está bien usar plain-text en local, pero para producción usar hashing (`bcrypt`) y no guardar contraseñas en texto plano.
+1. Desarrollo individual en ramas feature.
+2. Integración mediante Pull Requests.
+3. Revisión de cambios.
+4. Merge hacia la rama principal.
 
 ---
 
-## Frontend: flujo y archivos clave
+# Pull Requests
 
-- `frontend/site/js/config.js`: centraliza `API_URL`. Cambia aquí para apuntar a producción.
-- Páginas principales:
-	- `index.html`: hero, llamada para mostrar `equipo` corto y botones CTA.
-	- `servicios.html`: lista principal + contenedor `#contenedor-servicios` poblado por `servicios.js`.
-	- `pedido.html`: formulario, validado por `validaciones.js` y hace POST (simulado o hacia un endpoint si existe).
-- **Accesibilidad**: skip-link, `aria-labels` y estructura semántica (`main`, `section`, `article`).
+Durante el desarrollo se realizaron Pull Requests para integrar funcionalidades desarrolladas en ramas independientes hacia la rama principal del proyecto.
 
 ---
 
-## Ejecución local (paso a paso y comandos)
+# Distribución de tareas
 
-- Backend:
+## Agustín González
 
-```bash
-# desde la raíz del repo
-npm install
-node server.js
-# o si package.json define "start": "node server.js"
-npm start
-```
+* Desarrollo del frontend.
+* Diseño y maquetación de interfaces.
+* Implementación HTML, CSS y JavaScript.
+* Integración visual de la aplicación.
 
-- Frontend (desde `frontend/site`):
+## Manuel Aguilar
 
-```bash
-# opción 1: PowerShell script (si existe)
-.\scripts\serve.ps1
-
-# opción 2: Python simple server
-cd frontend/site
-python -m http.server 8000
-# abrir http://localhost:8000
-```
-
-- Verificar:
-	- Backend: abrir `http://localhost:3000/servicios` devuelve JSON.
-	- Frontend: abrir `http://localhost:8000` muestra el sitio y las llamadas fetch funcionan.
+* Desarrollo del backend.
+* Implementación de la API REST.
+* Creación de rutas y controladores.
+* Gestión de datos mediante archivos JSON.
 
 ---
 
-## Despliegue (sugerencia rápida)
+# Estado del proyecto
 
-- Backend: usar Render, Railway o Heroku. Subir repo, configurar `start` en `package.json` y variables de entorno.
-- Frontend: desplegar en Netlify, Vercel o incluso servir desde la carpeta `frontend/site` como sitio estático.
-- Si subes ambos, actualizar `frontend/site/js/config.js` con la URL pública de la API.
+Proyecto finalizado y funcional.
 
----
-
-## Pruebas y depuración
-
-- Probar endpoints con `curl` o Postman:
-
-```bash
-curl http://localhost:3000/servicios
-curl -X POST -H "Content-Type: application/json" -d '{"email":"a@b","password":"c"}' http://localhost:3000/login
-```
-
-- Logs: agregar `console.log` en controladores para rastrear errores.
-- Validaciones: revisar `validaciones.js` en frontend para cubrir casos (email inválido, campos requeridos).
-- Comprobación de CORS: si falla, inspeccionar consola del navegador y el middleware `cors()`.
+Incluye frontend integrado con backend mediante API REST, control de versiones con Git y trabajo colaborativo utilizando GitHub.
 
 ---
 
-## Buenas prácticas recomendadas
+# Licencia
 
-- No guardar contraseñas en texto plano (usar `bcrypt`).
-- Validar inputs tanto en frontend como backend.
-- Pasar a una DB real (SQLite o Mongo) si el proyecto crece.
-- Añadir tests unitarios para controllers (jest/supertest).
-- Añadir `helmet` para cabeceras de seguridad si se expone a internet.
-
----
-
-## Contribuir
-
-- Flow recomendado:
-	- Crear branch: `git checkout -b feature/nombre`
-	- Hacer commit pequeños y descriptivos.
-	- Abrir Pull Request contra `main`.
-- Añadir sección `CONTRIBUTING.md` con convenciones de commit si se desea.
-
----
-
-## Contacto y créditos
-
-- Autores: Agus (Frontend), Manu (Backend).
-- Emails de ejemplo: `gonagus.fran11@gmail.com`, `manuaguilar420@gmail.com`.
-
----
-
-## Licencia
-
-
-
+Proyecto desarrollado con fines académicos para la materia Programación III.
