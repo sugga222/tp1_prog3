@@ -196,7 +196,7 @@ Esta solución fue implementada con fines académicos para cumplir los requerimi
 ## Clonar repositorio
 
 ```bash
-git clone URL_DEL_REPOSITORIO
+git clone https://github.com/sugga222/tp1_prog3
 ```
 
 ## Ingresar al proyecto
